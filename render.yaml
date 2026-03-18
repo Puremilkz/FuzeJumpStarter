@@ -23,19 +23,11 @@ services:
   - type: web
     name: fuzejumperz
     env: static
-    region: singapore
     plan: free
     rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    headers:
-      - path: /*
-        name: Cache-Control
-        value: public, max-age=0, must-revalidate
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: fuzejumperz-api
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://fuzejumperz-api.onrender.com/api
 
